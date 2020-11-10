@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <!--Tanımlı bir girdi olmazsa bu kısım çalışır.-->
+    <category>
+        <pattern>*</pattern>
+        <template>I have no answer for that.</template>
+    </category>
+    <!--AIML ilk girdiler.-->
+    <category>
+        <pattern>merhaba</pattern>
+        <template>Merhaba dostum.</template>
+    </category>
+    <!--AIML ilk girdiler.-->
+    <category>
+        <pattern>nasılsın</pattern>
+        <template>İyiyim efendim, siz nasılsınız?</template>
+    </category>
+
+
+    <!--AIML <srai> tagi ile girdiye cevap aktarma yapılması.-->
+    <category>
+        <pattern>adın nedir</pattern>
+        <template>Benim adım Ayelar</template>
+    </category>
+    <category>
+        <pattern>ismin nedir</pattern>
+        <template><srai>adın nedir</srai></template>
+    </category>
+    <category>
+        <pattern>senin adın nedir</pattern>
+        <template><srai>adın nedir</srai></template>
+    </category>
+    <category>
+        <pattern>senin adın ne</pattern>
+        <template><srai>adın nedir</srai></template>
+    </category>
+
+
+    <!--AIML <star/> tagi ile girdiden veri çekme-->
+    <category>
+        <pattern>ben * yaşıyorum</pattern>
+        <template><star index="1"/> havalar nasıl?</template>
+    </category>
+
+    <!--python error-->
+    <!--AIML "*" kullanarak işlem yapma-->
+    <category>
+        <pattern>aiml nedir</pattern>
+        <template>Yapay Zeka İşaretleme Dilidir</template>
+    </category>
+    <category>
+        <pattern>* ne demek</pattern>
+        <template><srai><star index="1"/> nedir</srai></template>
+    </category>
+
+    <!--python error-->
+   <!--AIML <that> tagi içerisinde yapay zekanın son girdisi varsa
+    ve kullanıcı <pattern> içerisinde ki girdiyi girdiyse <template>
+    içerisinde ki geri döner yani diyalog oluşur-->
+    <category>
+        <pattern>başka adın var mı</pattern>
+        <that>Benim adım Ayelar</that>
+        <template>hayır başka adım yok</template>
+    </category>
+    <category>
+        <pattern>peki ya soyadın</pattern>
+        <that>hayır başka adım yok</that>
+        <template>hayır soyadım da yok</template>
+    </category>
+    <category>
+        <pattern>model numaran da mı yok</pattern>
+        <that>hayır başka adım yok</that>
+        <template>model numaram 0</template>
+    </category>
+
+    <!--AIML <random> listeler içerisinde verilen değerlerden birisini
+    rastgele seçmeye yarar, birden fazla şekilde cevap verebildiğimiz
+    opsiyonlarda kullanırız-->
+    <category>
+        <pattern>bir sayı seç</pattern>
+        <template>
+            <random>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </random>
+        </template>
+    </category>
+
+    <!--AIML <set> ve <get> bir değişken oluşturup onun içine değer atamaya ve onu çağırmaya yarar -->
+    <category>
+        <pattern>benim adım *</pattern>
+        <template>merhaba <set name = "username"><star/></set>!</template>
+    </category>
+    <category>
+        <pattern>benim adım ne</pattern>
+        <template>senin adın <get name = "username"/></template>
+    </category>
+    <!--AIML <think> tagi kullanıcı girdi girmeden değişkene atama yapar.-->
+
+    <!--python error-->
+    <!--AIML <condition> koşul durumlarını belirtir, switch-case gibi çalışır-->
+    <category>
+        <pattern>* hangi kıtada</pattern>
+        <template>
+            <think><set name = "state"><star/></set></think>
+            <condition name = "state" value = "Japonya">Japonya Asya kıtasındadır.</condition>
+            <condition name = "state" value = "İsviçre">İsviçre Avrupa kıtasındadır.</condition>
+            <condition name = "state" value = "Mısır">Mısır Afrika kıtasındadır.</condition>
+        </template>
+    </category>
+
+    <!--python error-->
+    <!--AIML <topic> bi nevi alt aiml dosyası gibi düşünülebilir, bu konuda biraz daha araştırma yapılmalıdır-->
+    <category>
+        <pattern>hadi * ile ilgili konuşalım</pattern>
+        <template>
+            <think><set name = "topic"><star/></set></think>
+            <star/> ile ilgili ne konuşmak istersin?
+        </template>
+    </category>
+    <topic name="aiml">
+        <category>
+            <pattern>aiml kaç harflidir</pattern>
+            <template>aiml 4 harflidir</template>
+        </category>
+        <category>
+            <pattern>aimlin üçüncü harfi nedir </pattern>
+            <template>aimlin üçüncü harfi "m"dir</template>
+        </category>
+    </topic>
+    <topic name="html">
+        <category>
+            <pattern>html kaç harflidir</pattern>
+            <template>html 4 harflidir</template>
+        </category>
+        <category>
+            <pattern>htmlin ikinci harfi nedir </pattern>
+            <template>htmlin ikinci harfi "t"dir</template>
+        </category>
+    </topic>
+</aiml>
+
