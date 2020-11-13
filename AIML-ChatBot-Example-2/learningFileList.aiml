@@ -1,5 +1,6 @@
 <aiml version="1.0">
     <category>
+    <!--Buradaki "LEARN AIML" ChatBot.py üzerinde ki "commands" ile aynı olmalıdır"-->
         <pattern>LEARN AIML</pattern>
         <template>
             <!-- Load standard AIML set -->

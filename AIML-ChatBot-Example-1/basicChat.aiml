@@ -5,12 +5,12 @@
         <pattern>*</pattern>
         <template>I have no answer for that.</template>
     </category>
+
     <!--AIML ilk girdiler.-->
     <category>
         <pattern>merhaba</pattern>
-        <template>Merhaba dostum.</template>
+        <template>Merhaba</template>
     </category>
-    <!--AIML ilk girdiler.-->
     <category>
         <pattern>nasılsın</pattern>
         <template>İyiyim efendim, siz nasılsınız?</template>
@@ -54,7 +54,7 @@
     </category>
 
     <!--python error-->
-   <!--AIML <that> tagi içerisinde yapay zekanın son girdisi varsa
+   <!--AIML <that> tagi içerisinde chatbotun son girdisi varsa
     ve kullanıcı <pattern> içerisinde ki girdiyi girdiyse <template>
     içerisinde ki geri döner yani diyalog oluşur-->
     <category>
@@ -77,14 +77,14 @@
     rastgele seçmeye yarar, birden fazla şekilde cevap verebildiğimiz
     opsiyonlarda kullanırız-->
     <category>
-        <pattern>bir sayı seç</pattern>
+        <pattern>bir gezegen seç</pattern>
         <template>
             <random>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
+                <li>mars</li>
+                <li>neptün</li>
+                <li>venüz</li>
+                <li>jupiter</li>
+                <li>urasüs</li>
             </random>
         </template>
     </category>
