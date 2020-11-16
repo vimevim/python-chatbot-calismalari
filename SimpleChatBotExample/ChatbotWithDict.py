@@ -1,6 +1,5 @@
 import string
 import random
-
 inputOutputDict = {
     "merhaba" :["Merhaba.","Selam","Merhaba hoşgeldiniz.","Merhabalar","Selamlar"],
     "hoş buldum" : "",#tepkisiz
@@ -14,29 +13,23 @@ inputOutputDict = {
     "senin adın ne" : "adın ne"
 }
 def ciktiAl(girdi):
+    # kullanıcı bir şey girmezse pass geçiyoruz
+    if girdi =="":
+        pass
+    # kullanıcının girdisi sözlükte yoksa "ne dediğini anlamadım." cevabını veriyoruz
+    elif girdi not in inputOutputDict:
+        print("Ne dediğinizi anlamadım.")
+    # eğer girdinin çoklu cevabı varsa random üretip random indexini çağırıyoruz
+    elif isinstance(inputOutputDict[girdi], list) == True:
+        rand = random.randint(0, len(inputOutputDict[girdi]) - 1)
+        # girdinin rastgele indeksini çağırıyoruz
+        print(inputOutputDict[girdi][rand])
+    # kullanıcı girdisinin karşılığı varsa karşılık dictionary içerisinde var mı kontrol ediyoruz
+    elif str(inputOutputDict[girdi]) in inputOutputDict:#list değeri str ile kıyaslanamadığı için str() dönüşümü uygulandı
+        print(inputOutputDict[inputOutputDict[girdi]])
     # kullanıcı girdisinin dictionary içerisinde var mı kontrol ediyoruz
-    if (girdi in inputOutputDict):
-        # kullanıcı girsininin karşılığı var mı kontrol ediyoruz
-        if (inputOutputDict[girdi] != ""):
-            # kullanıcı girdisinin karşılığı var ama karşılık dictionary içerisinde var mı kontrol ediyoruz
-            if (str(inputOutputDict[girdi]) not in inputOutputDict):#list değeri str ile kıyaslanamadığı için str() dönüşümü uygulandı
-                #eğer girdi rastgeleyse random üretip random indexini çağırıyoruz
-                if isinstance(inputOutputDict[girdi], list) == True:
-                    rand = random.randint(0,len(inputOutputDict[girdi])-1)
-                    #girdinin rastgele indeksini çağırıyoruz
-                    print(inputOutputDict[girdi][rand])
-                else:
-                    #eğer girdi liste değilse girdiyi çağırıyoruz
-                    print(inputOutputDict[girdi])
-            # kullanıcı girdisinin karşılığı dictionary içerisinde yoksa, karşılığı kullanıcıya veriyoruz
-            else:
-                print(inputOutputDict[inputOutputDict[girdi]])
-        # kullanıcı girdisinin karşılığı yoksa pass geçiyoruz
-        else:
-            pass
-    # kullanıcı girdisi dictionary içerisinde yoksa "ne dediğinizi anlamadım" mesajı veriyoruz
-    else:
-        print("Ne dediğinizi anlamadım")
+    elif girdi in inputOutputDict:
+        print(inputOutputDict[girdi])#girdi sözlükte varsa değerini veriyoruz
 # diyalogu sonsuz döngüye sokuyoruz
 while(True):
     # kullanıcıdan girdi alıyoruz
