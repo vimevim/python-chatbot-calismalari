@@ -1,6 +1,8 @@
 import string
+import random
+
 inputOutputDict = {
-    "merhaba" :"Merhaba, hoşgeldiniz.",
+    "merhaba" :["Merhaba.","Selam","Merhaba hoşgeldiniz.","Merhabalar","Selamlar"],
     "hoş buldum" : "",#tepkisiz
     "hoş bulduk" : "",
     "nasılsın" : "İyiyim efendim, siz nasılsınız?",
@@ -9,7 +11,7 @@ inputOutputDict = {
     "ankarada hava durumu ne" : "Soğuk, brrrrr.",
     "adın ne" : "Benim adım Ayelar",
     "ismin ne" :"adın ne",#aynı soruların cevaplarını eşleştir
-    "senin adın ne" : "adın ne",
+    "senin adın ne" : "adın ne"
 }
 def ciktiAl(girdi):
     # kullanıcı girdisinin dictionary içerisinde var mı kontrol ediyoruz
@@ -17,8 +19,15 @@ def ciktiAl(girdi):
         # kullanıcı girsininin karşılığı var mı kontrol ediyoruz
         if (inputOutputDict[girdi] != ""):
             # kullanıcı girdisinin karşılığı var ama karşılık dictionary içerisinde var mı kontrol ediyoruz
-            if (inputOutputDict[girdi] not in inputOutputDict):
-                print(inputOutputDict[girdi])
+            if (str(inputOutputDict[girdi]) not in inputOutputDict):#list değeri str ile kıyaslanamadığı için str() dönüşümü uygulandı
+                #eğer girdi rastgeleyse random üretip random indexini çağırıyoruz
+                if isinstance(inputOutputDict[girdi], list) == True:
+                    rand = random.randint(0,len(inputOutputDict[girdi])-1)
+                    #girdinin rastgele indeksini çağırıyoruz
+                    print(inputOutputDict[girdi][rand])
+                else:
+                    #eğer girdi liste değilse girdiyi çağırıyoruz
+                    print(inputOutputDict[girdi])
             # kullanıcı girdisinin karşılığı dictionary içerisinde yoksa, karşılığı kullanıcıya veriyoruz
             else:
                 print(inputOutputDict[inputOutputDict[girdi]])
