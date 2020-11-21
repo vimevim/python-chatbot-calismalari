@@ -27,6 +27,9 @@ def ciktiAl(girdi):
     # kullanıcı girdisinin karşılığı varsa karşılık dictionary içerisinde var mı kontrol ediyoruz
     elif str(inputOutputDict[girdi]) in inputOutputDict:#list değeri str ile kıyaslanamadığı için str() dönüşümü uygulandı
         print(inputOutputDict[inputOutputDict[girdi]])
+    # kullanıcı girdisinin karşılığı varsa karşılık dictionary içerisinde var mı kontrol ediyoruz
+    elif inputOutputDict[girdi] == "":  # list değeri str ile kıyaslanamadığı için str() dönüşümü uygulandı
+        pass
     # kullanıcı girdisinin dictionary içerisinde var mı kontrol ediyoruz
     elif girdi in inputOutputDict:
         print(inputOutputDict[girdi])#girdi sözlükte varsa değerini veriyoruz
